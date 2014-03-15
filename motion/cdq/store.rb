@@ -31,7 +31,8 @@ module CDQ
         coordinator = NSPersistentStoreCoordinator.alloc.initWithManagedObjectModel(@model_manager.current)
         error = Pointer.new(:object)
         options = { NSMigratePersistentStoresAutomaticallyOption => true,
-                    NSInferMappingModelAutomaticallyOption => true }
+                    NSInferMappingModelAutomaticallyOption => true,
+                    NSSQLiteManualVacuumOption => true }
         url = @config.database_url
         store = coordinator.addPersistentStoreWithType(NSSQLiteStoreType,
                                                        configuration:nil,
